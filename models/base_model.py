@@ -22,14 +22,18 @@ class BaseModel:
         # return f"{self.id} "
 
     def save(self):
+        self.updated_At = datetime.today
 
-        pass
+#add the 'class' key with the class name as its valuep
     def to_dict(self):
-        pass
-   
+        obj_dict = self.__dict__
+        obj_dict['__class__'] = self.__class__.__name__
+        return obj_dict
+
 
 
 base_Model_Istance = BaseModel()
+print(base_Model_Istance.to_dict())
 
 print(base_Model_Istance)
 
