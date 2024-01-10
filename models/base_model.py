@@ -1,7 +1,7 @@
 '''
 this is a uuid module in python it is used for the creation of unique id.
 '''
-from uuid import uuid4
+import uuid
 '''
 this is date and time module in python it helps us work with time.
 '''
@@ -9,7 +9,7 @@ from datetime import datetime
 
 class BaseModel:
     def __init__(self, **kwargs):
-        self.id = str(uuid4())
+        self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_At = self.created_at
 
