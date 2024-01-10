@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''
 this is a uuid module in python it is used for the creation of unique id.
 '''
@@ -8,17 +9,20 @@ this is date and time module in python it helps us work with time.
 from datetime import datetime
 
 class BaseModel:
-    def __init__(self, **kwargs):
+    def __init__(self,**kwargs):
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_At = self.created_at
+       
 
 
 #__str__: should print: [<class name>] (<self.id>) <self.__dict__>
     def __str__(self):
-        return f"{[self.__class__.__name__]} {(self.id)} {self.__dict__}"
+        return  f"{[self.__class__.__name__]} {(self.id)} {self.__dict__} "
+        # return f"{self.id} "
 
     def save(self):
+
         pass
     def to_dict(self):
         pass
@@ -27,7 +31,7 @@ class BaseModel:
 
 base_Model_Istance = BaseModel()
 
-print(str(base_Model_Istance))
+print(base_Model_Istance)
 
 
 # my_model = BaseModel()
