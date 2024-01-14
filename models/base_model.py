@@ -12,13 +12,13 @@ from uuid import uuid4
 
 class BaseModel:
 
-    """ Base class 
+    """ Base class
     Defines a class Basemodel from which its subclasses will
     inherit from. This is the ADAM class
     """
 
     def __init__(self, *args, **kwargs):
-        """ 
+        """
         Initializing the BaseModel
         """
         time_style = "%Y-%m-%dT%H:%M:%S.%f"
@@ -42,14 +42,14 @@ class BaseModel:
         models.storage.save()
 
     def __str__(self):
-        """ 
-        The magic class print format for the BaseModel 
+        """
+        The magic class print format for the BaseModel
         """
         class_name = self.__class__.__name__
         return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
 
     def to_dict(self):
-        """ 
+        """
         Return a dict of all keys/values of __dict__
 
         """
