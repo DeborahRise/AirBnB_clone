@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+
 """
 A base module for all other classes of the project
+Parent Class
 """
 
 import models
@@ -10,17 +12,22 @@ from uuid import uuid4
 
 class BaseModel:
 
-    """ Base class """
+    """ Base class
+    Defines a class Basemodel from which its subclasses will
+    inherit from. This is the ADAM class
+    """
 
     def __init__(self, *args, **kwargs):
-        """ Initializing the BaseModel"""
+        """
+        Initializing the BaseModel
+        """
         time_style = "%Y-%m-%dT%H:%M:%S.%f"
 
-        if len(kwargs):
+        if (kwargs):
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     setattr(self, key, datetime.strptime(value, time_style))
-                elif key != '__class__':
+                if key != '__class__':
                     setattr(self, key, value)
 
         else:
@@ -35,12 +42,17 @@ class BaseModel:
         models.storage.save()
 
     def __str__(self):
-        """ The magic class print format for the BaseModel """
+        """
+        The magic class print format for the BaseModel
+        """
         class_name = self.__class__.__name__
         return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
 
     def to_dict(self):
-        """ Return a dict of all keys/values of __dict__"""
+        """
+        Return a dict of all keys/values of __dict__
+
+        """
         base_dict = self.__dict__.copy()
         base_dict["created_at"] = self.created_at.isoformat()
         base_dict["updated_at"] = self.updated_at.isoformat()
