@@ -1,60 +1,66 @@
 #!/sr/bin/python3
-
 """
-A base module for all other classes of the project
-Parent Class
+this is the uuid module in python it is used for the creation of unique id.
+this is date and time module in python it helps us work with time.
 """
-
-import models
 from datetime import datetime
 from uuid import uuid4
+import models
 
 
 class BaseModel:
+    """Base model class, this is the super class
+    where every other class would inherit from
 
-    """ Base class
-    Defines a class Basemodel from which its subclasses will
-    inherit from. This is the ADAM class
+    Attributes
+        id: it's a public instance attribute uuid4 string
+        created_at: it's a public instance attribute, datetime
+        updated_at: it's a public instance attribute, datetime
+
+    Methods
+        save: we use it to keep track of any
+            change made to the instance BaseModel
+        to_dict: we use it to convert the data
+        of each instance into a dictionary
+        (first step of serialization/deserialization)
     """
+    TIME_FORMAT = "%Y-%m-%dT%H:%M:%S.%f"
 
     def __init__(self, *args, **kwargs):
+        """Initialize a new instance of BaseModel.
+        Args:
+            - *args: its not used
+            - **kwargs: i's a dictionary of key-values arguments
         """
-        Initializing the BaseModel
-        """
-
-        time_style = "%Y-%m-%dT%H:%M:%S.%f"
-        if len(kwargs):
-            for key, value in kwargs.items():
-                if key == "created_at" or key == "updated_at":
-                    setattr(self, key, datetime.strptime(value, time_style))
-                elif key != '__class__':
-                    setattr(self, key, value)
+        if kwargs:
+            for k, v in kwargs.items():
+                if k == '__class__':
+                    continue
+                if k in ['created_at', 'updated_at'] and\
+                        isinstance(v, str):
+                    v = datetime.strptime(v, self.TIME_FORMAT)
+                setattr(self, k, v)
 
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.updated_at = self.created_at
             models.storage.new(self)
 
     def __str__(self):
-        """
-        The magic class print format for the BaseModel
-        """
-        class_name = self.__class__.__name__
-        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
+        """returns the string representation of instance"""
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        """ the save method of the base model """
+        """helps save every created instance"""
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """
-        Return a dict of all keys/values of __dict__
-
-        """
-        base_dict = self.__dict__.copy()
-        base_dict["created_at"] = self.created_at.isoformat()
-        base_dict["updated_at"] = self.updated_at.isoformat()
-        base_dict["__class__"] = self.__class__.__name__
-        return base_dict
+        """helps convert object to dictionary"""
+        obj_dict = self.__dict__.copy()
+        obj_dict['__class__'] = self.__class__.__name__
+        for k, v in obj_dict.items():
+            if isinstance(v, datetime):
+                obj_dict[k] = v.isoformat()
+        return obj_dict
