@@ -69,7 +69,7 @@
     top: 56px;
     width: 100%;
     border:1px solid #DDDDDD;
-    display: none;
+    /* display: none; */
 }
 
 .locations:hover .popover
