@@ -72,6 +72,7 @@
     border:1px solid #DDDDDD;
     background-color: green;
     display: none;
+    margin-top: 0;
 }
 
 div:hover > .popover
