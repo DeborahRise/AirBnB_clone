@@ -71,8 +71,8 @@
     border:1px solid #DDDDDD;
 }
 
-.locations:hover 
+.locations:hover > .popover
 {
     cursor: pointer;
-
+    display: block;
 }
