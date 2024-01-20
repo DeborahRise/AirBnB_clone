@@ -74,7 +74,11 @@
     display: none;
 }
 
-div:ho
+div:hover > .popover
+{
+    display: block;
+    cue
+}
 
 
 
