@@ -73,10 +73,9 @@
     display: none;
 }
 
-.locations:hover
+.locations:hover .popover
 {
-    .popover{
+   
         display: block;
-    }
     cursor: pointer;
 }
