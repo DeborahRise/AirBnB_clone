@@ -74,7 +74,9 @@
 
 .locations:hover
 {
-    po
+    .popover{
+        
+    }
     display: block;
     cursor: pointer;
 }
