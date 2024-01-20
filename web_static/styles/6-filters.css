@@ -75,4 +75,5 @@
 .locations:hover
 {
     display: block;
+    cursor: pointer;
 }
