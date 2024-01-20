@@ -71,5 +71,8 @@
     box-sizing: border-box;
     border:1px solid #DDDDDD;
     background-color: green;
+    display: none;
 }
+
+
 
