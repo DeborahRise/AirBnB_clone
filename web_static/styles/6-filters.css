@@ -72,7 +72,7 @@
     display: none;
 }
 
-.locations > .popover
+.locations 
 {
     cursor: pointer;
     display: block;
