@@ -77,7 +77,7 @@
 div:hover > .popover
 {
     display: block;
-    cue
+    cursor: pointer;
 }
 
 
