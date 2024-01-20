@@ -72,7 +72,7 @@
     display: none;
 }
 
-.locations 
+.locations:hover
 {
     cursor: pointer;
     display: block;
