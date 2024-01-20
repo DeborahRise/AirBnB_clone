@@ -66,9 +66,8 @@
 .popover
 {
     position: absolute;
-    top: 100%;
-
-    /* width: 14.5vw; */
+    top: 56%;
+    width: 14.5vw;
     width: 100%;
     border:1px solid #DDDDDD;
     display: none;
