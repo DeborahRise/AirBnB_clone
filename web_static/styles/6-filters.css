@@ -72,7 +72,7 @@
     display: none;
 }
 
-div:hover > .popover
+.locations > .popover
 {
     cursor: pointer;
     display: block;
