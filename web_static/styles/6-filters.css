@@ -32,6 +32,7 @@
 {
     height: 100%;
     width: 25%;
+    position: relative;
    
 }
 
@@ -39,7 +40,6 @@
 {
      border-right: 1px solid #DDDDDD;
      background: red;
-     /* position: relative; */
 }
 
 .amenities
@@ -53,7 +53,6 @@
     color: black;
     margin-bottom: 0;
     text-align: center;
-    position: relative;
 }
 
 .locations h4, .amenities h4{
