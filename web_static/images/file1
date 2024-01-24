@@ -1,0 +1,1 @@
+config.vm.synced_folder "\Users\pc1\Documents\ALX School\html css course\webstatic\images>", "/home/vagrant/AirBnB_clone/web_static/images"
